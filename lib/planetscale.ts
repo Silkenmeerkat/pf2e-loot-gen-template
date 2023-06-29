@@ -1,25 +1,21 @@
-import type { ColumnType } from "kysely";
 import 'server-only';
+import { Generated, Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
-
-export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
-  ? ColumnType<S, I | undefined, U>
-  : ColumnType<T, T | undefined, T>;
 
 export interface Items {
   item_id: Generated<number>;
   img: string | null;
   name: string | null;
-  system_id: number | null;
+  system_id: Generated<number>;
   type: string | null;
 }
 
-export interface ItemTraits {
+interface ItemTraits {
   item_id: number;
   trait_id: number;
 }
 
-export interface System {
+interface System {
   system_id: number;
   description_value: string | null;
   bulk: number | null;
@@ -31,15 +27,20 @@ export interface System {
   source_book: string | null;
   rarity_value: string | null;
 }
-
-export interface Traits {
+interface Traits {
   trait_id: Generated<number>;
   trait_name: string | null;
 }
 
-export interface DB {
+interface DB {
   item_traits: ItemTraits;
   items: Items;
   system: System;
   traits: Traits;
 }
+
+export const queryBuilder = new Kysely<Database>({
+  dialect: new PlanetScaleDialect({
+    url: process.env.DATABASE_URL
+  })
+});

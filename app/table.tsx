@@ -8,32 +8,38 @@ import {
   Text
 } from '@tremor/react';
 
-interface User {
-  id: number;
+
+interface Items {
+  item_id: number;
+  img: string;
   name: string;
-  username: string;
-  email: string;
+  system_id: number;
+  type: string;
 }
 
-export default async function UsersTable({ users }: { users: User[] }) {
+export default async function ItemsTable({ items }: { items: item[] }) {
   return (
     <Table>
       <TableHead>
         <TableRow>
           <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Username</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
+          <TableHeaderCell>IMG</TableHeaderCell>
+          <TableHeaderCell>system_id</TableHeaderCell>
+          <TableHeaderCell>Type</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {users.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell>{user.name}</TableCell>
+        {items.map((item) => (
+          <TableRow key={item.item_id}>
+            <TableCell>{item.name}</TableCell>
             <TableCell>
-              <Text>{user.username}</Text>
+              <Text>{item.img}</Text>
             </TableCell>
             <TableCell>
-              <Text>{user.email}</Text>
+              <Text>{item.system_id}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{item.type}</Text>
             </TableCell>
           </TableRow>
         ))}
