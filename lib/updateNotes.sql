@@ -14,3 +14,5 @@ VALUES("divination");
 
 INSERT INTO Traits (trait_name)
 VALUES("magical");
+
+
