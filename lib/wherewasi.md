@@ -6,6 +6,6 @@
 5. Implemented probably correct migration up and downs in kysely
 # What we do next
 1. figure out how to write a migration class instance
-2. Figure out how to point it at the local db
+2. ~Figure out how to point it at the local db~
 3. Figure out how to run the up. 
 4. Start on ingestion engine! 
