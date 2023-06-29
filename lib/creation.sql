@@ -1,11 +1,16 @@
 -- Create the items table
+
+
 CREATE TABLE items (
-  item_id SERIAL PRIMARY KEY,
-  img VARCHAR(255),
-  name VARCHAR(255),
-  system_id INT,
-  type VARCHAR(255),
+    item_id int NOT NULL AUTO_INCREMENT,
+    system_id int NOT NULL,
+    img varchar(255),
+    name varchar(255) NOT NULL,
+    type varchar(255),
+    PRIMARY KEY (item_id)
 );
+
+  system_id SERIAL,
 
 -- Create the traits table
 CREATE TABLE traits (
