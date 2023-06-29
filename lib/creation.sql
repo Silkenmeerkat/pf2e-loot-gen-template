@@ -5,7 +5,6 @@ CREATE TABLE items (
   name VARCHAR(255),
   system_id INT,
   type VARCHAR(255),
-  FOREIGN KEY (system_id) REFERENCES system(system_id)
 );
 
 -- Create the traits table
@@ -18,8 +17,6 @@ CREATE TABLE traits (
 CREATE TABLE item_traits (
   item_id INT,
   trait_id INT,
-  FOREIGN KEY (item_id) REFERENCES items(item_id),
-  FOREIGN KEY (trait_id) REFERENCES traits(trait_id),
   PRIMARY KEY (item_id, trait_id)
 );
 
