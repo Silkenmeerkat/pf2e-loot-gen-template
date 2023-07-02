@@ -2,9 +2,11 @@ import { Card, Title, Text } from '@tremor/react';
 import { queryBuilder } from '../lib/planetscale';
 import Search from './search';
 import ItemsTable from './table';
-import { item } from '../classes/item'
+import { item } from './src/classes/item'
 
 export const dynamic = 'force-dynamic';
+
+
 
 export default async function IndexPage({
   searchParams

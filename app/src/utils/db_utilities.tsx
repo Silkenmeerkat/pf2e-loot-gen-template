@@ -1,5 +1,5 @@
 import { Kysely } from "kysely";
-import { queryBuilder } from '../lib/planetscale';
+import { queryBuilder } from '../../../lib/planetscale';
 import { sql } from "kysely";
 
 // Gets the next system id from the system table of DB. (Primarily used byu )
