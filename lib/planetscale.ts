@@ -39,7 +39,7 @@ interface DB {
   traits: Traits;
 }
 
-export const queryBuilder = new Kysely<Database>({
+export const queryBuilder = new Kysely<DB>({
   dialect: new PlanetScaleDialect({
     url: process.env.DATABASE_URL
   })
