@@ -1,4 +1,7 @@
-import { error } from "console";
+
+import { Kysely } from "kysely";
+import { queryBuilder } from '../lib/planetscale';
+import { sql } from "kysely";
 
 export class item{
     img: string = ""; 
@@ -53,7 +56,9 @@ export class item{
     //Methods for setting up DB calls and storing. 
     async assignNewSystemId(){
         this.system_id = await getNextSystemId()
-    };
+
+        
+     };
 
     //Write to Item Table
     private writeItem(){
@@ -72,10 +77,10 @@ export class item{
         //VALUES (1, 2), (1, 3);
     };
 
-    private checkNewTraits(traits: string){
+    // private checkNewTraits(traits: string){
         
 
-    }
+    // }
 
     printItemValues(){
         console.log(`name: ${this.name}`);
@@ -95,13 +100,12 @@ export class item{
 
 }
 
-// Gets the next system id from the system table of DB. (Primarily used byu )
+// Gets the next system id from the system table of DB. (Primarily used by )
 export async function getNextSystemId() {
-    const max_id = await queryBuilder
-    const max_id_final: number = max_id[0].max_id
+    const max_id: any = await queryBuilder
     .selectFrom('system')
     .select([sql`max(system_id)`.as(`max_id`)])
     .execute();
-    let nextId: number= max_id_final + 1;  
-    return nextId;
+    console.log(max_id)
+    return max_id[0].max_id+1;
 }
