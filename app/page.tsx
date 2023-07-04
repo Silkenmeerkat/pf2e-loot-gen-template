@@ -1,10 +1,10 @@
 import { Card, Title, Text } from '@tremor/react';
-import { queryBuilder } from '../lib/planetscale'
+import { db } from '../lib/planetscale'
 import Search from './search';
 import ItemsTable from './table';
-import { item } from '../classes/item';
-
+import { Items } from './table';
 export const dynamic = 'force-dynamic';
+
 
 
 
@@ -14,10 +14,16 @@ export default async function IndexPage({
   searchParams: { q: string };
 }) {
   const search = searchParams.q ?? '';
-  const items = await queryBuilder
+  const item: Items = await db
     .selectFrom('items')
-    .select(['item_id', 'img', 'name', 'system_id', 'type'])
+    .innerJoin('system', 'items.system_id', 'system.system_id')
+    .limit(20)
+    .select(['items.item_id', 'items.img', 'items.name', 'items.system_id', 'items.type', 'system.bulk', 'system.price_gp_value', 'system.description_value', 'system.rarity_value', 'system.level_value', 'system.source_book'])
     .execute();
+  //Get a seperate list that has the names of the 
+  // const traits: traits = await db
+  //   .selectFrom('item_traits')
+  //   .select([item])
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
@@ -27,7 +33,7 @@ export default async function IndexPage({
       </Text>
       <Search />
       <Card className="mt-6">
-        <ItemsTable items ={items} />
+        <ItemsTable items ={ item } />
       </Card>
     </main>
   );
