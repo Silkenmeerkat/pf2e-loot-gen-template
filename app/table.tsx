@@ -17,7 +17,7 @@ interface Items {
   type: string;
 }
 
-export default async function ItemsTable({ items }: { items: item[] }) {
+export default async function ItemsTable({ items }: { items: Items[] }) {
   return (
     <Table>
       <TableHead>

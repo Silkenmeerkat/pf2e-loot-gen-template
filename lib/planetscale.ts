@@ -4,10 +4,10 @@ import { PlanetScaleDialect } from 'kysely-planetscale';
 
 export interface Items {
   item_id: Generated<number>;
-  img: string | null;
-  name: string | null;
+  img: string;
+  name: string;
   system_id: Generated<number>;
-  type: string | null;
+  type: string;
 }
 
 interface ItemTraits {

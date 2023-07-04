@@ -27,7 +27,7 @@ export default async function IndexPage({
       </Text>
       <Search />
       <Card className="mt-6">
-        <ItemsTable items={items} />
+        <ItemsTable items ={items} />
       </Card>
     </main>
   );
