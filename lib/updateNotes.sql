@@ -16,3 +16,8 @@ INSERT INTO Traits (trait_name)
 VALUES("magical");
 
 
+
+select * from items where items.name="Abadar's Flawless Scale";
+
+
+select MAX(system_id) from system;
