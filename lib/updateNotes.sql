@@ -21,3 +21,19 @@ select * from items where items.name="Abadar's Flawless Scale";
 
 
 select MAX(system_id) from system;
+
+
+select items.item_id, traits.trait_name, items.name from items 
+Left JOIN system ON items.system_id = system.system_id 
+Inner join item_traits ON items.item_id = item_traits.item_id
+right join traits ON item_traits.trait_id = traits.trait_id
+WHERE items.item_id = 4356;
+
+
+SELECT items.item_id, items.name, GROUP_CONCAT(traits.trait_name) AS all_traits
+FROM items
+JOIN item_traits ON items.item_id = item_traits.item_id
+JOIN traits ON item_traits.trait_id = traits.trait_id
+where traits.trait_name != 'gadget'
+GROUP BY items.item_id;
+

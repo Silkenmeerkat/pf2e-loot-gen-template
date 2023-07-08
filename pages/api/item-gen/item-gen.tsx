@@ -6,9 +6,6 @@
 //4. Subtract the item's price from the total 
 //5. Roll again. Check if cash left in total. 
 
-import { Hash } from "crypto";
-import internal from "stream";
-
 //Level 1
 //Permenant Items: 2 level +1, 2 level
 //consumables: 2 level 2, 3 1st level
@@ -76,21 +73,6 @@ baseGoldPerLevel.set(18,12000)
 baseGoldPerLevel.set(19,20000)
 baseGoldPerLevel.set(20,35000)
 
-
-
-
-
-
-
-
-
-
-// SELECT items.item_id, items.name, GROUP_CONCAT(traits.trait_name) AS all_traits
-// FROM items
-// JOIN item_traits ON items.item_id = item_traits.item_id
-// JOIN traits ON item_traits.trait_id = traits.trait_id
-// where items.item_id= 4356
-// GROUP BY items.item_id;
-
-//6. 
-
+export default function main_handler(req, res){
+    res.status(200).json({name: 'John Doe' })
+}

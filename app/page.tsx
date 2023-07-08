@@ -4,6 +4,8 @@ import Search from './search';
 import ItemsTable from './table';
 import { Items } from './table';
 export const dynamic = 'force-dynamic';
+import { createDataContents } from './table';
+import { queryLevel } from './table';
 
 
 
@@ -14,12 +16,13 @@ export default async function IndexPage({
   searchParams: { q: string };
 }) {
   const search = searchParams.q ?? '';
-  const item: Items = await db
-    .selectFrom('items')
-    .innerJoin('system', 'items.system_id', 'system.system_id')
-    .limit(20)
-    .select(['items.item_id', 'items.img', 'items.name', 'items.system_id', 'items.type', 'system.bulk', 'system.price_gp_value', 'system.description_value', 'system.rarity_value', 'system.level_value', 'system.source_book'])
-    .execute();
+  // const item: Items = await db
+  //   .selectFrom('items')
+  //   .innerJoin('system', 'items.system_id', 'system.system_id')
+  //   .limit(20)
+  //   .select(['items.item_id', 'items.img', 'items.name', 'items.system_id', 'items.type', 'system.bulk', 'system.price_gp_value', 'system.description_value', 'system.rarity_value', 'system.level_value', 'system.source_book'])
+  //   .execute();
+  await item : Items = queryLevel(1)
   //Get a seperate list that has the names of the 
   // const traits: traits = await db
   //   .selectFrom('item_traits')
